@@ -19,10 +19,6 @@ Markus Kraus [@vMarkus_K](https://twitter.com/vMarkus_K)
 ## Project WebSite: 
 [mycloudrevolution.com](http://mycloudrevolution.com/)
 
-## Project Documentation: 
-
-[Read the Docs](http://readthedocs.io/)
-
 ## Project Description:
 
 My custom [Paster](https://github.com/PowerShell/Plaster) Templates
