@@ -68,7 +68,7 @@
                   rootModule='${PLASTER_PARAM_ModuleName}.psm1'
                   encoding='UTF8-NoBOM'/>
 
-            <file source='MyCustomPlasterTemplate-Template.psm1'
+            <templateFile source='MyCustomPlasterTemplate-Template.psm1'
                   destination='${PLASTER_PARAM_ModuleName}.psm1'/>
 
             <templateFile source='README.md'

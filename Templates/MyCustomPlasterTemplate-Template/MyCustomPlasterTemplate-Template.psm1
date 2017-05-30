@@ -1,4 +1,4 @@
-function My-Function {
+function <%=$PLASTER_PARAM_ModuleName%> {
 <#	
     .NOTES
     ===========================================================================
@@ -24,11 +24,11 @@ function My-Function {
 
     .Example
 
-    .PARAMETER Clustername
+    .PARAMETER myParameter
 
-#Requires PS -Version 4.0
-#Requires -Modules VMware.VimAutomation.Core, @{ModuleName="VMware.VimAutomation.Core";ModuleVersion="6.3.0.0"}
 #>
+#Requires -Version 4
+#Requires -Modules VMware.VimAutomation.Core, @{ModuleName="VMware.VimAutomation.Core";ModuleVersion="6.3.0.0"}
 
 [CmdletBinding()]
 param( 
