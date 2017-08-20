@@ -1,21 +1,16 @@
-<a name="Title">
-# Title
-
 <%=$PLASTER_PARAM_ModuleName%> PowerShell Module
+=============
 
-|Navigation|
-|-----------------|
-|[About](#About)|
-
-<a name="About">
 # About
-[*Back to top*](#Title)
 
-## Project Owner: 
+## Project Owner:
 
 Markus Kraus [@vMarkus_K](https://twitter.com/vMarkus_K)
 
+MY CLOUD-(R)EVOLUTION [mycloudrevolution.com](http://mycloudrevolution.com/)
+
 ## Project WebSite: 
+
 [mycloudrevolution.com](http://mycloudrevolution.com/)
 
 ## Project Documentation: 
