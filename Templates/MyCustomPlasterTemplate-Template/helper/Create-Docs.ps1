@@ -1,5 +1,5 @@
 ﻿$moduleRoot = Resolve-Path "$PSScriptRoot\.."
-Import-Module (Join-Path $moduleRoot "<%=$PLASTER_PARAM_ModuleName%>.psm1") -force
+Import-Module (Join-Path $moduleRoot "<%=$PLASTER_PARAM_ModuleName%>.psd1") -force
 
 $verbs = (Get-Command -Module '<%=$PLASTER_PARAM_ModuleName%>' |
   ForEach-Object -Process {
