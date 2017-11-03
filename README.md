@@ -18,4 +18,26 @@ MY CLOUD-(R)EVOLUTION [mycloudrevolution.com](http://mycloudrevolution.com/)
 
 ## Project Description:
 
-My custom [Paster](https://github.com/PowerShell/Plaster) Templates.
+My custom [Plaster](https://github.com/PowerShell/Plaster) Templates.
+
+## Templates
+
+### MyCustomPlasterTemplate-Template
+
+This Template is for PowerShell Projects. 
+* Basic [Pester](https://github.com/pester/Pester) Test
+    * should be valid powershell
+    * should not have Errors in  [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer) analysis
+    * can import cleanly
+* VSCode Task Config
+    * Pester Test
+    * Update Manifest File
+    * Create Read the Docs Files
+    * Update PowerShell Gallery 
+* VSCode PowerShell Settings
+* Helper Files
+    * Update Manifest File
+    * Create Read the Docs Files
+    * Update PowerShell Gallery 
+* GitHub Readme
+* Read the Docs Index Page
