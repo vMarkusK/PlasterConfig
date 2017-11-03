@@ -1,5 +1,6 @@
 PlasterConfig
 =============
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=vMarkus_K&url=https://github.com/mycloudrevolution/PlasterConfig&title=PlasterConfig&language=Powershell&tags=github&category=software)
 
 ![Invoke-Plaster](/Media/Invoke-Plaster.png)
 
