@@ -1,7 +1,9 @@
-﻿$moduleRoot = Resolve-Path "$PSScriptRoot\.."
-Import-Module (Join-Path $moduleRoot "<%=$PLASTER_PARAM_ModuleName%>.psd1") -force
+﻿$moduleName = '<%=$PLASTER_PARAM_ModuleName%>'
+$moduleRoot = Resolve-Path "$PSScriptRoot\.."
+Import-Module (Join-Path $moduleRoot "$moduleName.psd1") -force
 
-$verbs = (Get-Command -Module '<%=$PLASTER_PARAM_ModuleName%>' |
+
+$verbs = (Get-Command -Module $moduleName |
   ForEach-Object -Process {
     $_.Name.Split('-')[0]
   } |
@@ -15,7 +17,7 @@ foreach ($verb in $verbs)
   $data += ''
   $data += "This page contains details on **$verb** commands."
   $data += ''
-  foreach ($help in (Get-Command -Module '<%=$PLASTER_PARAM_ModuleName%>' | Where-Object -FilterScript {
+  foreach ($help in (Get-Command -Module $moduleName | Where-Object -FilterScript {
         $_.name -match $verb
   }))
   {
