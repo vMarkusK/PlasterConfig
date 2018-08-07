@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest
+      schemaVersion="1.0" xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+      <metadata>
+            <name>MyCustomPlasterTemplate-v2</name>
+            <id>8ccc688a-efd6-4729-91e7-8332291b7ad5</id>
+            <version>0.0.1</version>
+            <title>My Custom Plaster Template with PSake Build Script</title>
+            <description></description>
+            <author>Markus Kraus</author>
+            <tags></tags>
+      </metadata>
+      <parameters>
+            <parameter name='ModuleName'
+                  type='text'
+                  prompt='Enter the name of the module'/>
+
+            <parameter name='Version'
+                  type='text'
+                  prompt='Enter the version number of the module'
+                  default='0.1.0'/>
+
+            <parameter name='AddTest'
+                  type='choice'
+                  prompt='Create test dir and add Pester test for module manifest validation:'
+                  default='1'
+                  store='text'>
+                  <choice label='&amp;No'
+                        help="Choose not to add Pester test support."
+                        value="No"/>
+                  <choice label='&amp;Yes'
+                        help="Choose to add Pester test support."
+                        value="Yes"/>
+            </parameter>
+
+            <parameter name='Editor'
+                  type='choice'
+                  prompt='Select a editor for editor integration (or None):'
+                  default='1'
+                  store='text' >
+                  <choice label='&amp;None'
+                        help="No editor specified."
+                        value="None"/>
+                  <choice label='Visual Studio &amp;Code'
+                        help="Your editor is Visual Studio Code."
+                        value="VSCode"/>
+            </parameter>
+      </parameters>
+
+      <content>
+            <message>&#10;&#10;Scaffolding your PowerShell Module...&#10;&#10;&#10;</message>
+
+            <newModuleManifest destination='${PLASTER_PARAM_ModuleName}.psd1'
+                  moduleVersion='$PLASTER_PARAM_Version'
+                  rootModule='functions/${PLASTER_PARAM_ModuleName}.psm1'
+                  encoding='UTF8-NoBOM'/>
+
+            <templateFile source='functions/MyCustomPlasterTemplate-Template-v2.psm1'
+                  destination='functions/${PLASTER_PARAM_ModuleName}.psm1'/>
+
+            <templateFile source='README.md'
+                  destination='README.md'/>
+
+            <file source=''
+                  destination='media/'/>
+
+            <file source=''
+                  destination='functions/'/>
+
+            <file source=''
+                  destination='docs/'/>
+
+            <file source='docs\index.rst'
+                  destination='docs\index.rst'/>                   
+
+            <templateFile condition="$PLASTER_PARAM_AddTest -eq 'Yes'"
+                  source='tests\MyCustomPlasterTemplate-BasicTest.ps1'
+                  destination='tests\${PLASTER_PARAM_ModuleName}.Tests.ps1' />
+
+            <file condition="($PLASTER_PARAM_Editor -eq 'VSCode')"
+                  source='editor\VSCode\settings.json'
+                  destination='.vscode\settings.json' />
+
+            <file condition="(($PLASTER_PARAM_Editor -eq 'VSCode') -and ($PLASTER_PARAM_AddTest -eq 'Yes'))"
+                  source='editor\VSCode\tasks.json'
+                  destination='.vscode\tasks.json' />
+
+            <requireModule name="Pester" condition="$PLASTER_PARAM_AddTest -eq 'Yes'" minimumVersion="3.4.0"
+                  message="Without Pester, you will not be able to run the provided Pester test to validate your module manifest file.`nWithout version 3.4.0, VS Code will not display Pester warnings and errors in the Problems panel."/>
+
+            <message>
+
+Your new PowerShell module project '$PLASTER_PARAM_ModuleName' has been created.
+
+            </message>
+
+            <message condition="$PLASTER_PARAM_AddTest -eq 'Yes'">
+A Pester test has been created to validate the module's manifest file.  Add additional tests to the test directory.
+You can run the Pester tests in your project by executing the 'test' task.  Press Ctrl+P, then type 'task test'.
+
+            </message>
+
+            <message condition="$PLASTER_PARAM_AddHelperDoc -eq 'Yes'">
+A Script to help you to create the Files for ReadTheDocs is added to the helper Folder.
+You can run the Docs creation in your project by executing the 'CreateDocs' task.  Press Ctrl+P, then type 'task CreateDocs'.
+
+            </message>
+      </content>
+</plasterManifest>
